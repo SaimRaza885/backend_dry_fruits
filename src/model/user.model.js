@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["user", "admin"],
       default: "user", // regular users by default
-      index: true,
     },
     refreshToken: {
       type: String,
@@ -34,8 +33,6 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-userSchema.index({ fullName: "text" });
 
 // 🔐 Hash password before saving
 userSchema.pre("save", async function (next) {
